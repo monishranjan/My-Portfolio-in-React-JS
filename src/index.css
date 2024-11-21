@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Geist", sans-serif;
+    background-color: #E3E8EF;
+}
+
+/* Content CSS files */
+/* Download CV Button Styles */
+/* Basic button styling */
+.download-cv-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* Light ray effect on hover */
+.download-cv-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Light ray effect */
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+/* On hover, move the light ray from left to right */
+.download-cv-button:hover::before {
+  left: 100%;
+}
+
+.download-cv-button:hover {
+  background-color: #464646; /* Change background color on hover */
+  transition: background-color 0.3s ease;
+}

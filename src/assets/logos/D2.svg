@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123.52 123.52">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #191617;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g id="D2">
+      <path class="cls-1" d="m3.45,119.46c17.51-20.34,37.01-40.37,55.94-59.47,19.1-18.94,39.11-38.42,59.47-55.94-17.5,20.35-37.01,40.38-55.94,59.47-19.11,18.93-39.12,38.41-59.47,55.94h0Z"/>
+      <path class="cls-1" d="m118.85,119.46c-20.34-17.51-40.37-37.01-59.47-55.94C40.45,44.42,20.96,24.42,3.45,4.06c20.35,17.5,40.38,37.01,59.47,55.94,18.93,19.11,38.41,39.12,55.94,59.47h0Z"/>
+      <rect class="cls-1" x="45.42" y="84.07" width="32.68" height="32.68" transform="translate(-52.91 73.08) rotate(-45)"/>
+      <rect class="cls-1" x="84.07" y="45.42" width="32.68" height="32.68" transform="translate(73.08 -52.91) rotate(45)"/>
+      <rect class="cls-1" x="6.77" y="45.42" width="32.68" height="32.68" transform="translate(50.44 1.75) rotate(45)"/>
+      <rect class="cls-1" x="45.42" y="6.77" width="32.68" height="32.68" transform="translate(1.75 50.44) rotate(-45)"/>
+    </g>
+  </g>
+</svg>
