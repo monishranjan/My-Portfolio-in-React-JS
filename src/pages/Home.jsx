@@ -6,8 +6,8 @@ import { gsap } from 'gsap';
 import WorkItem from '../components/Home/WorkListing';
 
 const Home = () => {
-  const imgRef = useRef(null); // Reference to the image
-  const imgBannerRef = useRef(null); // Reference to the image banner div
+  const imgRef = useRef(null);
+  const imgBannerRef = useRef(null);
 
   useEffect(() => {
     // Mouse movement effect
