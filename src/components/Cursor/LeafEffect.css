@@ -1,0 +1,21 @@
+.leaf {
+  position: absolute;
+  width: 20px; /* Adjust size */
+  height: 20px; /* Adjust size */
+  background-image: url("../../assets/images/leaf.svg"); /* Replace with a leaf SVG */
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: leaf-flow 3s ease-out forwards;
+}
+
+@keyframes leaf-flow {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-100px, -200px) rotate(720deg);
+  }
+}
