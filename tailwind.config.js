@@ -14,6 +14,7 @@ export default {
 
       fontFamily: {
         geist: ["Geist", "sans-serif"],
+        malinton: ["Malinton", "sans-serif"],
       },
     },
   },

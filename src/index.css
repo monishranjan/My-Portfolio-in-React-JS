@@ -1,5 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
+/* Custom Fonts */
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Malinton";
+  src: url("./assets/fonts/Malinton/Malinton-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+/* ------------------------------------------------ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

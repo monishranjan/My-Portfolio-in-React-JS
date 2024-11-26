@@ -4,6 +4,8 @@ import UXHomeHero from '../components/Home/uxHomeHero';
 import img1 from '../assets/images/12.jpg';
 import { gsap } from 'gsap';
 import WorkItem from '../components/Home/WorkListing';
+import ExperienceList from '../components/Home/ExperienceList';
+import Marquee from '../components/Home/Marqeue';
 
 const Home = () => {
   const imgRef = useRef(null);
@@ -82,7 +84,7 @@ const Home = () => {
           {/* Section Header */}
           <div className="section-header">
             <h1 className="font-semibold text-6xl mb-4">My Works</h1>
-            <div className="h-[2px] bg-secondaryColor"></div>
+            <div className="h-[1px] bg-secondaryColor"></div>
           </div>
 
           {/* Work List */}
@@ -91,14 +93,12 @@ const Home = () => {
 
         {/* Experience */}
         <div className="py-60 px-20">
-          {/* Section Header */}
-          <div className="section-header">
-            <h1 className="font-semibold text-6xl mb-4">The Journey</h1>
-            <div className="h-[2px] bg-secondaryColor"></div>
-          </div>
+          <ExperienceList />
+        </div>
 
-          {/* Experience Listings */}
-          <div className="mt-16"></div>
+        {/* Marqeue Animation */}
+        <div className="pb-60">
+          <Marquee/>
         </div>
       </div>
     </div>
