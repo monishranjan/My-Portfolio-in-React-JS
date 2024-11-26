@@ -10,6 +10,9 @@ export default {
         primaryColor: "#E3E8EF",
         secondaryColor: "#181516",
         tertiaryColor: "#AFAFB5",
+        greenAccentColor: "#48FF00",
+        yellowAccentColor: "#FF0000FF",
+        redAccentColor: "#FFD900FF",
       },
 
       fontFamily: {

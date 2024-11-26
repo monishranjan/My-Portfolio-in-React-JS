@@ -6,6 +6,7 @@ import { gsap } from 'gsap';
 import WorkItem from '../components/Home/WorkListing';
 import ExperienceList from '../components/Home/ExperienceList';
 import Marquee from '../components/Home/Marqeue';
+import CustomFooter from '../components/Home/CustomFooter';
 
 const Home = () => {
   const imgRef = useRef(null);
@@ -99,6 +100,11 @@ const Home = () => {
         {/* Marqeue Animation */}
         <div className="pb-60">
           <Marquee/>
+        </div>
+
+        {/* Footer */}
+        <div className="">
+          <CustomFooter />
         </div>
       </div>
     </div>
