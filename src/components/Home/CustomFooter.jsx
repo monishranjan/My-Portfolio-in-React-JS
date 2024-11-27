@@ -1,57 +1,84 @@
-import React from 'react'
-
-// Importing Images
-import D2 from "../../assets/logos/D2.svg";
-import D3 from "../../assets/logos/D3.svg";
-import D4 from "../../assets/logos/D4.svg";
-import D5 from "../../assets/logos/D5.svg";
-import D6 from "../../assets/logos/D6.svg";
+import React from 'react';
 
 // Importing Icons
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { GoDotFill } from "react-icons/go";
-import { FaLinkedinIn } from "react-icons/fa";
-import { TbFileCv } from "react-icons/tb";
-import { FaBehance } from "react-icons/fa6";
 import { GiTireIronCross } from "react-icons/gi";
 
 const CustomFooter = () => {
   return (
-    <section className="bg-secondaryColor text-primaryColor flex flex-col items-center pt-40 pb-10">
-      <div className="the-button flex gap-2 items-center bg-primaryColor rounded-full py-3 px-4">
-        <GoDotFill className='text-greenAccentColor' />
-        <h1 className="text-secondaryColor font-medium">Available for new work</h1>
+    <section className="bg-secondaryColor text-primaryColor flex flex-col items-center pt-20 pb-8 md:pt-32 md:pb-16">
+      {/* Availability Button */}
+      <div className="flex gap-2 items-center bg-primaryColor rounded-full py-2 px-4">
+        <GoDotFill className="text-greenAccentColor text-lg" />
+        <h1 className="text-secondaryColor text-xs md:text-sm lg:text-base font-medium">
+          Available for new work
+        </h1>
       </div>
 
-        <div className="flex items-end mt-40 mb-48 gap-2">
-            <h2 className="text-8xl">Let's work together</h2>
-            <IoArrowForwardOutline className='text-8xl'/>
-        </div>
+      {/* Main Heading */}
+      <div className="flex flex-col md:flex-row items-center mt-16 md:mt-24 lg:mt-32 mb-16 md:mb-32 lg:mb-40 gap-4 md:gap-2 text-center md:text-left">
+        <h2 className="text-4xl md:text-6xl lg:text-8xl">
+          Let's {window.innerWidth < 768 ? "collaborate" : "work together"}
+        </h2>
+        <IoArrowForwardOutline className="text-6xl md:text-7xl lg:text-8xl hidden md:block" />
+      </div>
 
-        <div className="socials flex gap-24">
-          {/* LinkedIn */}
-          <div className="flex items-center gap-2">
-            <GiTireIronCross className='h-[14px]' />
-            <h4 className="">LinkedIn</h4>
-          </div>
-          {/* Behance */}
-          <div className="flex items-center gap-2">
-            <GiTireIronCross className='h-[14px]' />
-            <h4 className="">Behance</h4>
-          </div>
-          {/* Dribble */}
-          <div className="flex items-center gap-2">
-            <GiTireIronCross className='h-[14px]' />
-            <h4 className="">Dribble</h4>
-          </div>
-          {/* Download CV */}
-          <div className="flex items-center gap-2">
-            <GiTireIronCross className='h-[14px]' />
-            <h4 className="">Download CV</h4>
-          </div>
-        </div>
+      {/* Social Links */}
+      <div className="socials grid grid-cols-2 gap-8 md:flex md:gap-16 lg:gap-24 text-center md:text-left">
+        {/* LinkedIn */}
+        <a
+          href="https://www.linkedin.com/in/monishranjan/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 group justify-center md:justify-start"
+        >
+          <GiTireIronCross className="h-4 group-hover:animate-spinSlow transition-transform" />
+          <h4 className="hover:text-purple-500 transition-colors">
+            LinkedIn
+          </h4>
+        </a>
+
+        {/* Behance */}
+        <a
+          href="https://www.behance.net/monish9"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 group justify-center md:justify-start"
+        >
+          <GiTireIronCross className="h-4 group-hover:animate-spinSlow transition-transform" />
+          <h4 className="hover:text-purple-500 transition-colors">
+            Behance
+          </h4>
+        </a>
+
+        {/* Dribbble */}
+        <a
+          href="https://dribbble.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 group justify-center md:justify-start"
+        >
+          <GiTireIronCross className="h-4 group-hover:animate-spinSlow transition-transform" />
+          <h4 className="hover:text-purple-500 transition-colors">
+            Dribbble
+          </h4>
+        </a>
+
+        {/* Download CV */}
+        <a
+          href="/files/ATS CV Monish.pdf"
+          download
+          className="flex items-center gap-2 group justify-center md:justify-start"
+        >
+          <GiTireIronCross className="h-4 group-hover:animate-spinSlow transition-transform" />
+          <h4 className="hover:text-greenAccentColor transition-colors">
+            Download CV
+          </h4>
+        </a>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default CustomFooter
+export default CustomFooter;

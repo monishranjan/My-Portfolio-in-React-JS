@@ -21,19 +21,24 @@ const UxHomeHero = () => {
   }, []);
 
   return (
-    <div className='flex items-center justify-center py-60 leading-none'>
-      <div>
-        <h1 className="text-[200px] font-bold tracking-tight">Monish Ranjan</h1>
-        <div className="flex justify-between mt-4">
-          <div className="hero-profession text-3xl w-1/2 ml-3 relative overflow-hidden h-10 font-semibold">
+    <div className="flex items-center justify-center py-32 md:py-60 leading-none">
+      <div className="text-center md:text-left">
+        {/* Responsive heading */}
+        <h1 className="text-5xl md:text-[120px] lg:text-[200px] font-bold tracking-tight">
+          Monish Ranjan
+        </h1>
+        <div className="flex flex-col md:flex-row justify-between mt-4">
+          {/* Responsive profession section */}
+          <div className="hero-profession text-xl md:text-3xl w-full md:w-1/2 ml-0 md:ml-3 relative overflow-hidden h-10 font-semibold">
             <h2 ref={professionRef1} className="absolute top-0 left-0 w-full">
-              Ui/Ux Designer
+              UI/UX Designer
             </h2>
             <h2 ref={professionRef2} className="absolute top-0 left-0 w-full">
               Web & App Developer
             </h2>
           </div>
-          <h2 className="text-2xl font-light">
+          {/* Responsive tagline */}
+          <h2 className="mt-4 md:mt-0 text-lg md:text-2xl font-light">
             Creating apps & websites that do more than just exist online — leave a lasting impression.
           </h2>
         </div>

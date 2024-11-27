@@ -19,6 +19,10 @@ export default {
         geist: ["Geist", "sans-serif"],
         malinton: ["Malinton", "sans-serif"],
       },
+
+      animation: {
+        spinSlow: "spin 3s linear infinite"
+      },
     },
   },
   plugins: [],
