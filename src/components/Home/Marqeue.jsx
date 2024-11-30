@@ -59,7 +59,7 @@ const Marquee = () => {
         {items.map((item, index) => (
           <span
             key={index}
-            className="text-4xl font-semibold mx-6 text-primaryColor font-malinton"
+            className="text-xl font-semibold mx-6 text-primaryColor font-malinton"
           >
             {item}
           </span>

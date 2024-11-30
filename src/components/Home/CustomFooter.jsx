@@ -4,12 +4,14 @@ import React from 'react';
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { GoDotFill } from "react-icons/go";
 import { GiTireIronCross } from "react-icons/gi";
+import Marquee from './Marqeue';
 
 const CustomFooter = () => {
   return (
-    <section className="bg-secondaryColor text-primaryColor flex flex-col items-center pt-20 pb-8 md:pt-32 md:pb-16">
+    <section className="bg-secondaryColor text-primaryColor flex flex-col items-center pb-8 mt-24 md:pb-16 pt-6">
+      <Marquee />
       {/* Availability Button */}
-      <div className="flex gap-2 items-center bg-primaryColor rounded-full py-2 px-4">
+      <div className="flex gap-2 items-center bg-primaryColor rounded-full py-2 px-4 mt-20 md:mt-32">
         <GoDotFill className="text-greenAccentColor text-lg" />
         <h1 className="text-secondaryColor text-xs md:text-sm lg:text-base font-medium">
           Available for new work

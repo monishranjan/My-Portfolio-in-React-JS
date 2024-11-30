@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import D2 from "../../assets/logos/D2.svg";
 import D3 from "../../assets/logos/D3.svg";
@@ -7,10 +7,34 @@ import D5 from "../../assets/logos/D5.svg";
 import D6 from "../../assets/logos/D6.svg";
 
 // Importing Icons
-import { CgMenuLeft } from "react-icons/cg";
+import { CgMenuRight } from "react-icons/cg";
 
 const HomeHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const handleMenuToggle = () => {
+    if (!isMenuOpen) {
+      // Slide-in animation from top
+      gsap.fromTo(
+        menuRef.current,
+        { y: "-100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 0.6, ease: "power3.out" }
+      );
+    } else {
+      // Slide-out animation to top
+      gsap.to(menuRef.current, {
+        y: "-100%",
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.in",
+        onComplete: () => setIsMenuOpen(false),
+      });
+      return; // Prevent setting state before animation completes
+    }
+
+    setIsMenuOpen(true);
+  };
 
   useEffect(() => {
     const logos = document.querySelectorAll(".right-logo img");
@@ -92,21 +116,21 @@ const HomeHeader = () => {
         {/* Hamburger Menu (Visible below md size) */}
         <div
           className="flex md:hidden cursor-pointer flex-col gap-1"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={handleMenuToggle}
         >
-          {/* <div className="h-1 w-6 bg-black rounded"></div>
-          <div className="h-1 w-6 bg-black rounded"></div>
-          <div className="h-1 w-6 bg-black rounded"></div> */}
-          <CgMenuLeft className="text-3xl"/>
+          <CgMenuRight className="text-3xl" />
         </div>
       </div>
 
       {/* Fullscreen Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col justify-center items-center z-50">
+        <div
+          ref={menuRef}
+          className="fixed inset-0 bg-secondaryColor flex flex-col justify-center items-center z-50 fullscreen-menu"
+        >
           <button
             className="absolute border-[1px] border-primaryColor hover:border-transparent hover:bg-primaryColor hover:text-secondaryColor rounded-full px-3 py-[2px] top-4 right-4 text-white text-3xl"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={handleMenuToggle}
           >
             &times;
           </button>

@@ -102,9 +102,9 @@ const Home = () => {
         </div>
 
         {/* Marquee Animation */}
-        <div className="pb-20 sm:pb-40 md:pb-60">
+        {/* <div className="pb-20 sm:pb-40 md:pb-60">
           <Marquee />
-        </div>
+        </div> */}
 
         {/* Footer */}
         <div>
