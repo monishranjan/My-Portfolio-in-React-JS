@@ -34,7 +34,7 @@ const WorkItem = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
       {workItems.map((item, index) => (
         <div
           className="relative group overflow-hidden cursor-pointer rounded-md shadow-lg"

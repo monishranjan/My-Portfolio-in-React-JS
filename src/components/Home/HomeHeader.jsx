@@ -1,28 +1,26 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import D2 from "../../assets/logos/D2.svg";
 import D3 from "../../assets/logos/D3.svg";
 import D4 from "../../assets/logos/D4.svg";
 import D5 from "../../assets/logos/D5.svg";
 import D6 from "../../assets/logos/D6.svg";
-
-// Importing Icons
 import { CgMenuRight } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
-const HomeHeader = () => {
+const HomeHeader = ({ scrollToWork, scrollToExperience }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     if (!isMenuOpen) {
-      // Slide-in animation from top
       gsap.fromTo(
         menuRef.current,
         { y: "-100%", opacity: 0 },
         { y: "0%", opacity: 1, duration: 0.6, ease: "power3.out" }
       );
     } else {
-      // Slide-out animation to top
       gsap.to(menuRef.current, {
         y: "-100%",
         opacity: 0,
@@ -30,60 +28,11 @@ const HomeHeader = () => {
         ease: "power3.in",
         onComplete: () => setIsMenuOpen(false),
       });
-      return; // Prevent setting state before animation completes
+      return;
     }
 
     setIsMenuOpen(true);
   };
-
-  useEffect(() => {
-    const logos = document.querySelectorAll(".right-logo img");
-
-    const startEngineAnimation = () => {
-      logos.forEach((logo, index) => {
-        const tl = gsap.timeline();
-
-        tl.fromTo(
-          logo,
-          { rotation: 0 },
-          {
-            rotation: index % 2 === 0 ? 360 : -360,
-            duration: 2,
-            ease: "power1.in",
-          }
-        )
-          .to(logo, {
-            rotation: index % 2 === 0 ? -360 : 360,
-            duration: 1.5,
-            ease: "power1.out",
-          })
-          .to(logo, {
-            rotation: index % 2 === 0 ? 0 : 0,
-            duration: 0.5,
-            ease: "power2.inOut",
-          })
-          .to(logo, {
-            rotation: index % 2 === 0 ? 360 : -360,
-            duration: 10,
-            repeat: -1,
-            ease: "none",
-          });
-      });
-    };
-
-    startEngineAnimation();
-
-    const handleScroll = () => {
-      gsap.killTweensOf(".right-logo img");
-      startEngineAnimation();
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -98,12 +47,20 @@ const HomeHeader = () => {
           <img src={D2} alt="Logo D2" />
         </div>
 
-        {/* Right Side Content (Hidden below md size) */}
+        {/* Right Side Content */}
         <div className="hidden md:flex gap-5 items-center">
-          <h1 className="hover:font-semibold cursor-pointer">Work</h1>
-          <h1 className="hover:font-semibold cursor-pointer">Experience</h1>
-          <h1 className="hover:font-semibold cursor-pointer">Process</h1>
-          <h1 className="hover:font-semibold cursor-pointer">About</h1>
+          <h1 onClick={scrollToWork} className="hover:font-semibold cursor-pointer">
+            Work
+          </h1>
+          <h1 onClick={scrollToExperience} className="hover:font-semibold cursor-pointer">
+            Experience
+          </h1>
+          <h1
+            onClick={() => navigate("/about")}
+            className="hover:font-semibold cursor-pointer"
+          >
+            About
+          </h1>
           <a
             href="/files/ATS CV Monish.pdf"
             download="Monish-CV.pdf"
@@ -113,7 +70,7 @@ const HomeHeader = () => {
           </a>
         </div>
 
-        {/* Hamburger Menu (Visible below md size) */}
+        {/* Hamburger Menu */}
         <div
           className="flex md:hidden cursor-pointer flex-col gap-1"
           onClick={handleMenuToggle}
@@ -135,10 +92,21 @@ const HomeHeader = () => {
             &times;
           </button>
           <ul className="text-white text-2xl font-light space-y-6 text-center">
-            <li className="hover:font-semibold cursor-pointer">Work</li>
-            <li className="hover:font-semibold cursor-pointer">Experience</li>
-            <li className="hover:font-semibold cursor-pointer">Process</li>
-            <li className="hover:font-semibold cursor-pointer">About</li>
+            <li onClick={scrollToWork} className="hover:font-semibold cursor-pointer">
+              Work
+            </li>
+            <li
+              onClick={scrollToExperience}
+              className="hover:font-semibold cursor-pointer"
+            >
+              Experience
+            </li>
+            <li
+              onClick={() => navigate("/about")}
+              className="hover:font-semibold cursor-pointer"
+            >
+              About
+            </li>
             <li>
               <a
                 href="/files/ATS CV Monish.pdf"

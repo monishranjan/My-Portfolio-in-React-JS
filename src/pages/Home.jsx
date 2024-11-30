@@ -1,14 +1,26 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import HomeHeader from "../components/Home/HomeHeader";
-import UXHomeHero from "../components/Home/uxHomeHero";
-import img1 from "../assets/images/12.jpg";
-import { gsap } from "gsap";
-import WorkItem from "../components/Home/WorkListing";
+import UxHomeHero from "../components/Home/uxHomeHero";
 import ExperienceList from "../components/Home/ExperienceList";
-import Marquee from "../components/Home/Marqeue";
-import CustomFooter from "../components/Home/CustomFooter";
+import WorkItem from "../components/Home/WorkListing";
+import CustomFooter from "../components/Home/CustomFooter"
+
+// Importing Images
+import img1 from "../assets/images/12.jpg";
+import gsap from "gsap";
 
 const Home = () => {
+  const workRef = useRef(null);
+  const experienceRef = useRef(null);
+
+  const scrollToWork = () => {
+    workRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToExperience = () => {
+    experienceRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   const imgRef = useRef(null);
   const imgBannerRef = useRef(null);
 
@@ -63,11 +75,14 @@ const Home = () => {
   return (
     <div className="w-full text-secondaryColor bg-primaryColor">
       {/* Header */}
-      <HomeHeader />
+      <HomeHeader
+        scrollToWork={scrollToWork}
+        scrollToExperience={scrollToExperience}
+      />
 
       {/* Home Page Content */}
       <div>
-        <UXHomeHero />
+        <UxHomeHero />
 
         {/* Image Banner with fixed positioning */}
         <div
@@ -83,8 +98,10 @@ const Home = () => {
         </div>
 
         {/* UI & Development Works */}
-        <div className="pt-20 sm:pt-40 md:pt-60 px-8 sm:px-12 md:px-20">
-          {/* Section Header */}
+        <div
+          ref={workRef}
+          className="pt-20 sm:pt-40 md:pt-60 px-8 sm:px-12 md:px-20"
+        >
           <div className="section-header">
             <h1 className="font-semibold text-3xl sm:text-4xl md:text-6xl mb-2 sm:mb-4">
               My Works
@@ -92,19 +109,16 @@ const Home = () => {
             <div className="h-[1px] bg-secondaryColor"></div>
           </div>
 
-          {/* Work List */}
           <WorkItem />
         </div>
 
         {/* Experience */}
-        <div className="py-20 sm:py-40 md:py-60 px-8 sm:px-12 md:px-20">
+        <div
+          ref={experienceRef}
+          className="py-20 sm:py-40 md:py-60 px-8 sm:px-12 md:px-20"
+        >
           <ExperienceList />
         </div>
-
-        {/* Marquee Animation */}
-        {/* <div className="pb-20 sm:pb-40 md:pb-60">
-          <Marquee />
-        </div> */}
 
         {/* Footer */}
         <div>
