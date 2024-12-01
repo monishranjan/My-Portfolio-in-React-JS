@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import './App.css'
-import Home from './pages/Home'
-import LeafCursor from './components/Cursor/LeafCursor'
-import UnderDevelopment from './components/UnderDevelopmentSticker'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import GraphicDesign from "./pages/HomeGraphics"; // This is the new page you need to create
+import Landing from "./pages/Landing";
+import UnderDevelopment from "./components/UnderDevelopmentSticker";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <LeafCursor/> */}
       <UnderDevelopment />
-      <Home/>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/graphic-design" element={<GraphicDesign />} />
+      </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
