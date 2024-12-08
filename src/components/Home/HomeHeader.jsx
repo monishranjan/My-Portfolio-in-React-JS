@@ -34,6 +34,55 @@ const HomeHeader = ({ scrollToWork, scrollToExperience }) => {
     setIsMenuOpen(true);
   };
 
+  useEffect(() => {
+    const logos = document.querySelectorAll(".right-logo img");
+
+    const startEngineAnimation = () => {
+      logos.forEach((logo, index) => {
+        const tl = gsap.timeline();
+
+        tl.fromTo(
+          logo,
+          { rotation: 0 },
+          {
+            rotation: index % 2 === 0 ? 360 : -360,
+            duration: 2,
+            ease: "power1.in",
+          }
+        )
+          .to(logo, {
+            rotation: index % 2 === 0 ? -360 : 360,
+            duration: 1.5,
+            ease: "power1.out",
+          })
+          .to(logo, {
+            rotation: index % 2 === 0 ? 0 : 0,
+            duration: 0.5,
+            ease: "power2.inOut",
+          })
+          .to(logo, {
+            rotation: index % 2 === 0 ? 360 : -360,
+            duration: 10,
+            repeat: -1,
+            ease: "none",
+          });
+      });
+    };
+
+    startEngineAnimation();
+
+    const handleScroll = () => {
+      gsap.killTweensOf(".right-logo img");
+      startEngineAnimation();
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {/* Header */}
