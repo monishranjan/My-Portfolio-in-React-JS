@@ -5,6 +5,7 @@ import workThumbnail2 from "../../assets/images/2.jpg";
 import workThumbnail3 from "../../assets/images/3.jpg";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { IoBanOutline } from "react-icons/io5";
+import BOI from "../../pages/UISideProject/boiRedesignProject"
 
 const WorkItem = () => {
   const navigate = useNavigate();
