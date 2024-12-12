@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import ProjectHeader from '../../components/UiSideProject/projectHeader';
-import Marquee from 'react-fast-marquee';
-
-
+import React, { useEffect, useState } from "react";
+import ProjectHeader from "../../components/UiSideProject/projectHeader";
+import Marquee from "react-fast-marquee";
 
 // Importing images
 import TopImage from "../../assets/images/boi1.jpg";
@@ -11,18 +9,20 @@ import ProfileM from "../../assets/images/project/boi/profile.png";
 import SplashScreenM from "../../assets/images/project/boi/splashscreen.png";
 import HomePageM from "../../assets/images/project/boi/homepage1.png";
 import CardsM from "../../assets/images/project/boi/cards1.png";
+import ProjectNavigation from "../../components/UiSideProject/ProjectNavigation";
 
 const BoiRedesignProject = () => {
   const [showStickyNav, setShowStickyNav] = useState(false);
+  const [activeSection, setActiveSection] = React.useState(null);
 
   const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
 
   // Handle sticky navigation visibility
   useEffect(() => {
     const handleScroll = () => {
-      const navSection = document.getElementById('navSection');
+      const navSection = document.getElementById("navSection");
       if (navSection) {
         const rect = navSection.getBoundingClientRect();
 
@@ -35,10 +35,34 @@ const BoiRedesignProject = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("Scroll event triggered");
+      const sections = document.querySelectorAll("[data-section]");
+      console.log("Sections found:", sections);
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        console.log("Section Rect:", section.id, rect);
+        if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+          console.log(`Currently visible: ${section.id}`);
+          setActiveSection(section.id);
+        }
+      });
+    };
+
+    const sectionsCheck = document.querySelectorAll("[data-section]");
+    console.log("Initial Sections Check:", sectionsCheck);
+
+    setTimeout(() => {
+      window.addEventListener("scroll", handleScroll);
+    }, 100); // Wait for DOM updates
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -47,6 +71,7 @@ const BoiRedesignProject = () => {
       <div className="relative z-10">
         <ProjectHeader />
       </div>
+      {/* =========================== */}
 
       {/* Top Image Section */}
       <div className="relative">
@@ -63,10 +88,13 @@ const BoiRedesignProject = () => {
             Bank of India
           </h1>
           <p className="text-primaryColor text-base md:text-lg max-w-xl font-light">
-          We ara a leading public sector bank in India, offering a wide range of banking services with a focus on customer satisfaction and digital innovation.
+            We ara a leading public sector bank in India, offering a wide range
+            of banking services with a focus on customer satisfaction and
+            digital innovation.
           </p>
         </div>
       </div>
+      {/* =========================== */}
 
       {/* About Project */}
       <div className="project-details py-24 px-56">
@@ -77,10 +105,17 @@ const BoiRedesignProject = () => {
               <h1 className="text-3xl font-semibold">Background</h1>
               <div className="h-[1px] bg-secondaryColor mt-4"></div>
             </div>
-            <h4 className="text-lg mt-8">Bank of India (BOI) is one of the leading public sector banks in India, established in 1906. It offers a wide range of banking services, including personal, corporate, and digital banking, with a strong focus on customer satisfaction and financial inclusion. BOI aims to leverage technology to provide accessible and efficient banking solutions to its diverse customer base.</h4>
+            <h4 className="text-lg mt-8">
+              Bank of India (BOI) is one of the leading public sector banks in
+              India, established in 1906. It offers a wide range of banking
+              services, including personal, corporate, and digital banking, with
+              a strong focus on customer satisfaction and financial inclusion.
+              BOI aims to leverage technology to provide accessible and
+              efficient banking solutions to its diverse customer base.
+            </h4>
           </div>
           <div className="">
-            <img src={BOILogo} alt="" className='h-36' />
+            <img src={BOILogo} alt="" className="h-36" />
           </div>
         </div>
 
@@ -91,14 +126,26 @@ const BoiRedesignProject = () => {
               <h1 className="text-3xl font-semibold">THE PROBLEM</h1>
               <div className="h-[1px] bg-secondaryColor mt-4"></div>
             </div>
-            <h4 className="text-lg mt-8">The Bank of India mobile app has a cluttered interface, making navigation difficult for users. Essential features are poorly placed, and finding specific banking services is frustrating due to an overwhelming layout. </h4>
+            <h4 className="text-lg mt-8">
+              The Bank of India mobile app has a cluttered interface, making
+              navigation difficult for users. Essential features are poorly
+              placed, and finding specific banking services is frustrating due
+              to an overwhelming layout.{" "}
+            </h4>
           </div>
           <div className="project-poroblem w-1/2 pl-24">
             <div className="">
               <h1 className="text-3xl font-semibold">THE SOLUTION</h1>
               <div className="h-[1px] bg-secondaryColor mt-4"></div>
             </div>
-            <h4 className="text-lg mt-8">The app redesign focuses on simplifying the homepage with a cleaner, more intuitive layout. Key features, such as the "Tap to view balance" button, were repositioned for better accessibility. Essential services are now consolidated into a single, user-friendly interface to improve navigation. These changes aim to deliver a seamless and efficient banking experience, enhancing user satisfaction.
+            <h4 className="text-lg mt-8">
+              The app redesign focuses on simplifying the homepage with a
+              cleaner, more intuitive layout. Key features, such as the "Tap to
+              view balance" button, were repositioned for better accessibility.
+              Essential services are now consolidated into a single,
+              user-friendly interface to improve navigation. These changes aim
+              to deliver a seamless and efficient banking experience, enhancing
+              user satisfaction.
             </h4>
           </div>
         </div>
@@ -127,11 +174,16 @@ const BoiRedesignProject = () => {
           </div>
         </div>
       </div>
+      {/* =========================== */}
 
       {/* Image Showcase with Marquee */}
       <div className="pb-32">
         <Marquee speed={50} gradient={false} pauseOnHover={true}>
-          <img src={SplashScreenM} alt="Splash Screen" className="h-[560px] mx-24" />
+          <img
+            src={SplashScreenM}
+            alt="Splash Screen"
+            className="h-[560px] mx-24"
+            />
           <img src={HomePageM} alt="Home Page" className="h-[560px] mx-24" />
           <img src={ProfileM} alt="Profile" className="h-[560px] mx-24" />
           <img src={CardsM} alt="Cards" className="h-[560px] mx-24" />
@@ -140,172 +192,154 @@ const BoiRedesignProject = () => {
       {/* =========================== */}
 
       {/* Project Navigation */}
-      <div className="project-navigation"></div>
+      <div className="project-navigation flex">
+        <div className=""></div>
+      </div>
 
       {/* Sticky Navigation */}
       {showStickyNav && (
-        <div className="fixed top-0 left-0 w-full bg-primaryColor shadow-lg z-50 py-4">
-          <div className="flex items-center justify-center gap-3">
-            {/* Navigation Item 1 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section1')}
-                className="w-10 h-10 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-base font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                1
-              </button>
-            </div>
-
-            {/* Connecting Line */}
+        <div className="fixed top-0 left-0 w-full bg-primaryColor shadow-lg z-50 py-8 border-b-[1px] border-secondaryColor">
+          <div className="flex justify-center items-center">
+            <button
+              onClick={() => scrollToSection("section1")}
+              className={`px-6 py-2 rounded-full border-[1px] flex items-center justify-center text-sm font-normal transition-all duration-300 ${
+                activeSection === "section1"
+                  ? "bg-secondaryColor text-primaryColor"
+                  : "border-secondaryColor text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor"
+              }`}
+            >
+              Discovery
+            </button>
             <div className="h-[1px] w-16 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-10 h-10 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-base font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                2
-              </button>
-            </div>
-            {/* Connecting Line */}
+            <button
+              onClick={() => scrollToSection("section2")}
+              className={`px-6 py-2 rounded-full border-[1px] flex items-center justify-center text-sm font-normal transition-all duration-300 ${
+                activeSection === "section2"
+                  ? "bg-secondaryColor text-primaryColor"
+                  : "border-secondaryColor text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor"
+              }`}
+            >
+              Ideation
+            </button>
             <div className="h-[1px] w-16 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-10 h-10 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-base font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                3
-              </button>
-            </div>
-            {/* Connecting Line */}
+            <button
+              onClick={() => scrollToSection("section3")}
+              className={`px-6 py-2 rounded-full border-[1px] flex items-center justify-center text-sm font-normal transition-all duration-300 ${
+                activeSection === "section3"
+                  ? "bg-secondaryColor text-primaryColor"
+                  : "border-secondaryColor text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor"
+              }`}
+            >
+              Design
+            </button>
             <div className="h-[1px] w-16 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-10 h-10 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-base font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
+            <button
+              onClick={() => scrollToSection("section4")}
+              className={`px-6 py-2 rounded-full border-[1px] flex items-center justify-center text-sm font-normal transition-all duration-300 ${
+                activeSection === "section4"
+                  ? "bg-secondaryColor text-primaryColor"
+                  : "border-secondaryColor text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor"
+              }`}
               >
-                4
-              </button>
-            </div>
-            {/* Connecting Line */}
+              Dev Handoff
+            </button>
             <div className="h-[1px] w-16 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-10 h-10 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-base font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                5
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-center text-sm">
-            <span className="mt-2">Discovery</span>
-            <div className="w-[48px]"></div>
-            <span className="mt-2">Ideation</span>
-            <div className="w-[72px]"></div>
-            <span className="mt-2">Design</span>
-            <div className="w-[72px]"></div>
-            <span className="mt-2">Dev Handoff</span>
-            <div className="w-[72px]"></div>
-            <span className="mt-2">Reflection</span>
+            <button
+              onClick={() => scrollToSection("section5")}
+              className={`px-6 py-2 rounded-full border-[1px] flex items-center justify-center text-sm font-normal transition-all duration-300 ${
+                activeSection === "section5"
+                  ? "bg-secondaryColor text-primaryColor"
+                  : "border-secondaryColor text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor"
+              }`}
+            >
+              Reflection
+            </button>
           </div>
         </div>
       )}
+      {/* ================== */}
 
       {/* Navigation Section */}
       <div
         id="navSection"
         className="flex items-center justify-center mt-8 mb-32"
       >
-        <div className="items-center justify-center">
-          <div className="flex items-center gap-3">
-            {/* Navigation Item 1 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section1')}
-                className="w-16 h-16 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                1
-              </button>
-            </div>
-
-            {/* Connecting Line */}
-            <div className="h-[1px] w-32 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-16 h-16 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                2
-              </button>
-            </div>
-            {/* Connecting Line */}
-            <div className="h-[1px] w-32 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-16 h-16 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                3
-              </button>
-            </div>
-            {/* Connecting Line */}
-            <div className="h-[1px] w-32 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-16 h-16 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                4
-              </button>
-            </div>
-            {/* Connecting Line */}
-            <div className="h-[1px] w-32 bg-secondaryColor"></div>
-
-            {/* Navigation Item 2 */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => scrollToSection('section2')}
-                className="w-16 h-16 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-white transition-all duration-300"
-              >
-                5
-              </button>
-            </div>
-          </div>
-          <div className="flex">
-            <span className="text-base mt-2">Discovery</span>
-            <div className="w-[146px]"></div>
-            <span className="text-base mt-2">Ideation</span>
-            <div className="w-[164px]"></div>
-            <span className="text-base mt-2">Design</span>
-            <div className="w-[144px]"></div>
-            <span className="text-base mt-2">Dev Handoff</span>
-            <div className="w-[128px]"></div>
-            <span className="text-base mt-2">Reflection</span>
-          </div>
+        <div className="flex items-center justify-center">
+          <button
+            onClick={() => scrollToSection("section1")}
+            className={`px-8 py-2 rounded-full border-[1px] flex items-center justify-center text-lg font-normal transition-all duration-300 ${
+              activeSection === "section1" ? "bg-secondaryColor text-primaryColor" : "border-secondaryColor text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor"
+            }`}
+          >
+            Discovery
+          </button>
+          <div className="h-[1px] w-16 bg-secondaryColor"></div>
+          <button
+            onClick={() => scrollToSection("section2")}
+            className="px-8 py-2 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300"
+          >
+            Ideation
+          </button>
+          <div className="h-[1px] w-16 bg-secondaryColor"></div>
+          <button
+            onClick={() => scrollToSection("section3")}
+            className="px-8 py-2 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300"
+          >
+            Design
+          </button>
+          <div className="h-[1px] w-16 bg-secondaryColor"></div>
+          <button
+            onClick={() => scrollToSection("section4")}
+            className="px-8 py-2 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300"
+          >
+            Dev Handoff
+          </button>
+          <div className="h-[1px] w-16 bg-secondaryColor"></div>
+          <button
+            onClick={() => scrollToSection("section5")}
+            className="px-8 py-2 rounded-full border-[1px] border-secondaryColor flex items-center justify-center text-lg font-normal text-secondaryColor hover:bg-secondaryColor hover:text-primaryColor transition-all duration-300"
+          >
+            Reflection
+          </button>
         </div>
       </div>
       {/* ================== */}
 
       {/* Sections */}
-      <div id="section1" className="h-screen">
-        <h2 className="text-3xl font-bold text-center">Welcome to the Top Section</h2>
+      <div
+        id="section1"
+        data-section="section1"
+        className="h-screen bg-gray-100 flex items-center justify-center text-4xl"
+      >
+        Discovery Content
       </div>
-      <div id="section2" className="h-screen bg-[#f0f4f8]">
-        <h2 className="text-3xl font-bold text-center">Welcome to About Section</h2>
+      <div
+        id="section2"
+        data-section="section2"
+        className="h-screen bg-gray-200 flex items-center justify-center text-4xl"
+      >
+        Ideation Content
+      </div>
+      <div
+        id="section3"
+        data-section="section3"
+        className="h-screen bg-gray-300 flex items-center justify-center text-4xl"
+      >
+        Design Content
+      </div>
+      <div
+        id="section4"
+        data-section="section4"
+        className="h-screen bg-gray-400 flex items-center justify-center text-4xl"
+      >
+        Dev Handoff Content
+      </div>
+      <div
+        id="section5"
+        data-section="section5"
+        className="h-screen bg-gray-500 flex items-center justify-center text-4xl"
+      >
+        Reflection Content
       </div>
     </div>
   );
